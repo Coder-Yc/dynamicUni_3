@@ -1,0 +1,6 @@
+<view class="contain">
+    <text class="text" bindtap="clickName">test</text>
+	<view>
+		<text>1231e2</text>
+	</view>
+    </view>
