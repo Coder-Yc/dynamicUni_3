@@ -19,8 +19,10 @@ const _sfc_main = {
   }
 };
 var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/yangchong/Desktop/dynamicUni_3/App.vue"]]);
+const templateCom = () => "./components/template.js";
 function createApp() {
   const app = common_vendor.createSSRApp(App);
+  app.component("templateCom", templateCom);
   app.config.globalProperties.$pakoRun = utils_pakoRun.pakoRun;
   return {
     app

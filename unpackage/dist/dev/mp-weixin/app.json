@@ -8,5 +8,8 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "template-com": "/components/template"
+  },
+  "sitemapLocation": "sitemap.json"
 }

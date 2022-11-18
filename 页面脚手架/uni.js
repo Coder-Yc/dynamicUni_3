@@ -79,6 +79,7 @@ fs.readFile("dist/index.json", (err, buffer) => {
                 
                     }
                 }
+                console.log(JSON.parse(JSON.stringify(res, null, 2)));
                 return res;
             };
     
@@ -125,7 +126,7 @@ fs.readFile("dist/index.json", (err, buffer) => {
                         level--;
                     }
                 });
-                // console.log(result)
+                // console.log(JSON.parse(JSON.stringify(result, null, 2)))
                 return result;
             };
             onLoad(() => {

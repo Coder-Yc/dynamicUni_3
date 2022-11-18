@@ -1,4 +1,5 @@
 .hbuilderx
 .vite
+unpackage
 node_modules
 页面脚手架/node_modules

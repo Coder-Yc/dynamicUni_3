@@ -23,7 +23,7 @@ function runCode() {
         var $out = '',
           $line = [0, 0];
         try {
-          $out += "<view  class='contain'>  <text  class='text' @tap='clickName' style='color: blue;'> test  </text> <view >  <text > 1231e2  </text>  </view>  </view> ";
+          $out += "<view  class='contain'>  <text  class='text' @tap='clickName' style='color: blue;'> test  </text> <scroll-view  scroll-y='true' class='scroll-Y' style='height: 300rpx;'>  <view  id='demo1' class='scroll-view-item uni-bg-red' style='background-color: red; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> A  </view> <view  id='demo2' class='scroll-view-item uni-bg-green' style='background-color: blue; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> B  </view> <view  id='demo3' class='scroll-view-item uni-bg-blue' style='background-color: pink; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> C  </view>  </scroll-view>  </view> ";
         } catch (error) {
           throw {
             name: 'RuntimeError',
@@ -31,7 +31,7 @@ function runCode() {
             message: error.message,
             line: $line[0] + 1,
             column: $line[1] + 1,
-            source: "<view  class='contain'>  <text  class='text' @tap='clickName' style='color: blue;'> test  </text> <view >  <text > 1231e2  </text>  </view>  </view> ",
+            source: "<view  class='contain'>  <text  class='text' @tap='clickName' style='color: blue;'> test  </text> <scroll-view  scroll-y='true' class='scroll-Y' style='height: 300rpx;'>  <view  id='demo1' class='scroll-view-item uni-bg-red' style='background-color: red; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> A  </view> <view  id='demo2' class='scroll-view-item uni-bg-green' style='background-color: blue; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> B  </view> <view  id='demo3' class='scroll-view-item uni-bg-blue' style='background-color: pink; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> C  </view>  </scroll-view>  </view> ",
             stack: error.stack
           };
         }

@@ -4,4 +4,33 @@
 .text {
     color: blue;
 }
- 
+.scroll-Y {
+    height: 300rpx;
+}
+.scroll-view_H {
+    white-space: nowrap;
+    width: 100%;
+}
+.scroll-view-item {
+    height: 300rpx;
+    line-height: 300rpx;
+    text-align: center;
+    font-size: 36rpx;
+}
+.scroll-view-item_H {
+    display: inline-block;
+    width: 100%;
+    height: 300rpx;
+    line-height: 300rpx;
+    text-align: center;
+    font-size: 36rpx;
+}
+#demo1 {
+    background-color: red;
+}
+#demo2 {
+    background-color: blue;
+}
+#demo3 {
+    background-color: pink;
+}

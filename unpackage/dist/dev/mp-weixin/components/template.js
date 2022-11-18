@@ -1,11 +1,7 @@
 "use strict";
 var common_vendor = require("../common/vendor.js");
-const templateCom = () => Promise.resolve().then(function() {
-  return L1VzZXJzL3lhbmdjaG9uZy9EZXNrdG9wL2R5bmFtaWNVbmlfMy9jb21wb25lbnRzL3RlbXBsYXRlLnZ1ZQ;
-});
 const _sfc_main = {
   name: "templateCom",
-  components: { templateCom },
   props: {
     data: {
       type: Array,
@@ -41,27 +37,39 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         h: common_vendor.s(item["style"]),
         i: common_vendor.o(item["@tap"])
       }) : item["type1"] === "view" ? common_vendor.e({
-        k: item["children"].length !== 0
+        k: item["text"]
+      }, item["text"] ? {
+        l: common_vendor.t(item["text"])
+      } : {}, {
+        m: item["children"].length !== 0
       }, item["children"].length !== 0 ? {
-        l: "64fd18e1-1-" + i0,
-        m: common_vendor.p({
+        n: "64fd18e1-1-" + i0,
+        o: common_vendor.p({
           data: item["children"]
         })
       } : {}, {
-        n: item["id"],
-        o: common_vendor.n(item["class"]),
-        p: common_vendor.s(item["style"]),
-        q: common_vendor.o(item["@tap"])
+        p: item["id"],
+        q: common_vendor.n(item["class"]),
+        r: common_vendor.s(item["style"]),
+        s: common_vendor.o(item["@tap"])
+      }) : item["type1"] === "scroll-view" ? common_vendor.e({
+        v: item["children"].length !== 0
+      }, item["children"].length !== 0 ? {
+        w: "64fd18e1-2-" + i0,
+        x: common_vendor.p({
+          data: item["children"]
+        })
+      } : {}, {
+        y: item["id"],
+        z: common_vendor.n(item["class"]),
+        A: common_vendor.s(item["style"])
       }) : {}, {
         j: item["type1"] === "view",
-        r: item
+        t: item["type1"] === "scroll-view",
+        B: item
       });
     })
   };
 }
 var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/yangchong/Desktop/dynamicUni_3/components/template.vue"]]);
 wx.createComponent(Component);
-var L1VzZXJzL3lhbmdjaG9uZy9EZXNrdG9wL2R5bmFtaWNVbmlfMy9jb21wb25lbnRzL3RlbXBsYXRlLnZ1ZQ = /* @__PURE__ */ Object.freeze({
-  __proto__: null,
-  [Symbol.toStringTag]: "Module"
-});

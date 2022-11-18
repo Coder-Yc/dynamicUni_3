@@ -192,7 +192,7 @@ function AstRead(html, css, js, otherCss, darkCss) {
         newHtml = parsehtml(htmlAst);
         newHtml = newHtml.replace(/input1/g, `input`);
         var template = require("art-template");
-        console.log(newHtml);
+        // console.log(newHtml);
         var a = template.compile(newHtml);
 
         let str = "";
@@ -324,7 +324,7 @@ function parseTag(tag) {
     if (tag.match(/wx:else/)) {
         res["wx:else"] = "";
     }
-    // console.log(res);
+    console.log(JSON.parse(JSON.stringify(res, null, 2)));
     return res;
 }
 

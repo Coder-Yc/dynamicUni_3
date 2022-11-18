@@ -1,7 +1,9 @@
 import * as Q from "./pako.js";
 
+
 const {goPako, inflate} = Q.default
 function pakoRun(args, astGo) {
+	// console.log(Q)
         let sdGO = {};
         let _utf8_decode = (utftext) => {
             var string = "";
