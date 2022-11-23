@@ -10,6 +10,5 @@
   },
   "usingComponents": {
     "template-com": "/components/template"
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

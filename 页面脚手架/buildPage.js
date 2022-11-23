@@ -268,7 +268,7 @@ setdata: function setdata(dictData) {
     });
 }
 
-let SPECIAL_PROPERTIES = ["bindtap"];
+let SPECIAL_PROPERTIES = ["bindtap", 'bindscroll', 'bindscrolltoupper', 'bindscrolltolower'];
 
 function parseTag(tag) {
     let res = {

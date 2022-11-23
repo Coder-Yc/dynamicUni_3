@@ -12,7 +12,7 @@ fs.readFile("dist/index.json", (err, buffer) => {
     import { onLoad, onReady } from "@dcloudio/uni-app";
     import { ref, getCurrentInstance } from "vue";
     import templateCom from "../../components/template.vue";
-
+	import bus from "./mitt.js"
     export default {
         components: {
             templateCom,
@@ -140,6 +140,11 @@ fs.readFile("dist/index.json", (err, buffer) => {
                         let onLoad = pakoRun(args, args.code);
                         let method = onLoad();
                         for (const key in method) {
+							bus.on(key, (message) => {
+								method[key](message)
+								// console.log(2, (_this.data))
+							
+							});
                             _this[key] = method[key];
                         }
                         _this.onLoad();

@@ -1,11 +1,11 @@
-<template >
+<template>
     <block v-for="(item, index) of data" :key="item">
         <text
             v-if="item['type1'] === 'text'"
             :id="item['id']"
             :class="item['class']"
             :style="item['style']"
-            @tap="item['@tap']"
+            @tap="clickName(item['@tap'])"
         >
             {{ item["text"] }}
             <template v-if="item['children'].length !== 0">
@@ -17,7 +17,7 @@
             :id="item['id']"
             :class="item['class']"
             :style="item['style']"
-            @tap="item['@tap']"
+            @tap="clickName(item['@tap'])"
         >
             <text v-if="item['text']">{{ item["text"] }}</text>
             <template v-if="item['children'].length !== 0">
@@ -30,7 +30,12 @@
             :id="item['id']"
             :class="item['class']"
             :style="item['style']"
-            scroll-y="true"
+            @tap="clickName(item['@tap'])"
+            :[scrollX]="item['scroll-x']"
+            :[scrollY]="item['scroll-y']"
+            @scrolltoupper="clickName($event, item['@scrolltoupper'])"
+            @scrolltolower="clickName($event, item['@scrolltolower'])"
+            @scroll="clickName($event, item['@scroll'])"
         >
             <template v-if="item['children'].length !== 0">
                 <templateCom :data="item['children']"></templateCom>
@@ -40,7 +45,9 @@
 </template>
 
 <script>
-
+import { onMounted } from "vue";
+import bus from "../pages/index/mitt.js";
+import { ref, getCurrentInstance, reactive } from "vue";
 export default {
     name: "templateCom",
     props: {
@@ -50,29 +57,25 @@ export default {
                 return [];
             },
         },
+        method: {
+            type: Object,
+            default() {
+                return {};
+            },
+        },
     },
-    setup() {
+    setup(props) {
         // let { proxy } = getCurrentInstance();
         // let _this = proxy
-        // let arr = ['data', 'onLoad','setdata']
-        // onMounted(() => {
-        // 	let dataM = props.methods
-        // 	if(dataM.dataM){
-        // 		let methods = dataM.dataM
-        // 		for(let i in methods) {
-        // 			console.log(i)
-        // 			if(!arr.includes(i)) {
-        // 				_this[i] = methods[i]
-        // 			}
-        // 		}
-        // 		console.log(_this)
-        // 	}
-        // })
-        return {};
+
+        let scrollY = "scroll-y";
+        let scrollX = "scroll-x";
+        const clickName = (e, name) => {
+            bus.emit(name, e);
+        };
+        return { clickName, scrollY, scrollX };
     },
 };
 </script>
 
 <style lang="scss" scoped></style>
-
-

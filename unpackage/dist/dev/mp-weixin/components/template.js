@@ -1,5 +1,6 @@
 "use strict";
 var common_vendor = require("../common/vendor.js");
+var pages_index_mitt = require("../pages/index/mitt.js");
 const _sfc_main = {
   name: "templateCom",
   props: {
@@ -8,10 +9,21 @@ const _sfc_main = {
       default() {
         return [];
       }
+    },
+    method: {
+      type: Object,
+      default() {
+        return {};
+      }
     }
   },
-  setup() {
-    return {};
+  setup(props) {
+    let scrollY = "scroll-y";
+    let scrollX = "scroll-x";
+    const clickName = (name) => {
+      pages_index_mitt.bus.emit(name);
+    };
+    return { clickName, scrollY, scrollX };
   }
 };
 if (!Array) {
@@ -35,7 +47,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         f: item["id"],
         g: common_vendor.n(item["class"]),
         h: common_vendor.s(item["style"]),
-        i: common_vendor.o(item["@tap"])
+        i: common_vendor.o(($event) => $setup.clickName(item["@tap"]))
       }) : item["type1"] === "view" ? common_vendor.e({
         k: item["text"]
       }, item["text"] ? {
@@ -51,7 +63,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         p: item["id"],
         q: common_vendor.n(item["class"]),
         r: common_vendor.s(item["style"]),
-        s: common_vendor.o(item["@tap"])
+        s: common_vendor.o(($event) => $setup.clickName(item["@tap"]))
       }) : item["type1"] === "scroll-view" ? common_vendor.e({
         v: item["children"].length !== 0
       }, item["children"].length !== 0 ? {
@@ -62,11 +74,15 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       } : {}, {
         y: item["id"],
         z: common_vendor.n(item["class"]),
-        A: common_vendor.s(item["style"])
+        A: common_vendor.s(item["style"]),
+        B: common_vendor.o(($event) => $setup.clickName(item["@tap"])),
+        C: common_vendor.o(($event) => $setup.clickName(item["@scrolltoupper"])),
+        D: common_vendor.o(($event) => $setup.clickName(item["@scrolltolower"])),
+        E: common_vendor.o(($event) => $setup.clickName(item["@scroll"]))
       }) : {}, {
         j: item["type1"] === "view",
         t: item["type1"] === "scroll-view",
-        B: item
+        F: item
       });
     })
   };

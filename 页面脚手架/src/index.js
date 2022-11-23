@@ -3,6 +3,12 @@ Page({
         counter: 0,
     },
     clickName: function () {
-        console.log("-----------点击了");
+        console.log("-----------clickName点击了");
+    },
+    scrollClick: function () {
+        console.log("-----------scrollClick点击了", this.data.counter);
+    },
+    scroll(e) {
+        console.log(e);
     },
 });

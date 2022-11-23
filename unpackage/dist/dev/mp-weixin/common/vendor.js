@@ -6078,11 +6078,28 @@ const createHook = (lifecycle) => (hook, target = getCurrentInstance()) => {
   !isInSSRComponentSetup && injectHook(lifecycle, hook, target);
 };
 const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
+function mitt(n2) {
+  return { all: n2 = n2 || /* @__PURE__ */ new Map(), on: function(t2, e2) {
+    var i = n2.get(t2);
+    i ? i.push(e2) : n2.set(t2, [e2]);
+  }, off: function(t2, e2) {
+    var i = n2.get(t2);
+    i && (e2 ? i.splice(i.indexOf(e2) >>> 0, 1) : n2.set(t2, []));
+  }, emit: function(t2, e2) {
+    var i = n2.get(t2);
+    i && i.slice().map(function(n3) {
+      n3(e2);
+    }), (i = n2.get("*")) && i.slice().map(function(n3) {
+      n3(t2, e2);
+    });
+  } };
+}
 exports._export_sfc = _export_sfc;
 exports.createSSRApp = createSSRApp;
 exports.e = e;
 exports.f = f;
 exports.getCurrentInstance = getCurrentInstance;
+exports.mitt = mitt;
 exports.n = n;
 exports.o = o;
 exports.onLoad = onLoad;

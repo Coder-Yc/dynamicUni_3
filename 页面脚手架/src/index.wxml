@@ -1,6 +1,11 @@
 <view class="contain">
     <text class="text" bindtap="clickName">test</text>
-    <scroll-view scroll-y="true" class="scroll-Y">
+    <scroll-view
+        scroll-y="true"
+        class="scroll-Y"
+        bindtap="scrollClick"
+        bindscroll="scroll"
+    >
         <view id="demo1" class="scroll-view-item uni-bg-red">A</view>
         <view id="demo2" class="scroll-view-item uni-bg-green">B</view>
         <view id="demo3" class="scroll-view-item uni-bg-blue">C</view>

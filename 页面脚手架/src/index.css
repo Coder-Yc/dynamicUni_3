@@ -34,3 +34,17 @@
 #demo3 {
     background-color: pink;
 }
+
+.scroll-view-item_H {
+    display: inline-block;
+    width: 100%;
+    height: 300rpx;
+    line-height: 300rpx;
+    text-align: center;
+    font-size: 36rpx;
+}
+
+.scroll-view_H {
+    white-space: nowrap;
+    width: 100%;
+}
