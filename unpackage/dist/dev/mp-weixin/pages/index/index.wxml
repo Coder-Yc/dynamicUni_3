@@ -1,1 +1,1 @@
-<template-com wx:if="{{a}}" u-i="993901d0-0" bind:__l="__l" u-p="{{a}}"></template-com>
+<template-com wx:if="{{a}}" u-i="a73e9fdc-0" bind:__l="__l" u-p="{{a}}"></template-com>

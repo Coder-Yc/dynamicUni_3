@@ -7,7 +7,8 @@ const _sfc_main = {
     templateCom
   },
   setup() {
-    let html = common_vendor.ref("undefind");
+    let html = common_vendor.ref([]);
+    let dataInfo = common_vendor.ref({});
     let { proxy } = common_vendor.getCurrentInstance();
     let _this = proxy;
     const tychange = (typeofData) => {
@@ -91,7 +92,7 @@ const _sfc_main = {
     common_vendor.onLoad(() => {
       let { pakoRun } = proxy.$pakoRun;
       let args = {
-        code: `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`
+        code: `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`
       };
       if (args) {
         try {
@@ -103,13 +104,14 @@ const _sfc_main = {
             });
             _this[key] = method[key];
           }
+          dataInfo.value = method["data"];
           _this.onLoad();
         } catch (err) {
           console.log(err);
         }
       }
     });
-    return { tychange, parseTag, parse, html };
+    return { tychange, parseTag, parse, html, dataInfo };
   }
 };
 if (!Array) {
@@ -119,9 +121,10 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.p({
-      data: $setup.html
+      data: $setup.html,
+      dataInfo: $setup.dataInfo
     })
   };
 }
-var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/yangchong/Desktop/dynamicUni_3/pages/index/index.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/yangchong/Desktop/\u9879\u76EE/dynamicUni_3/pages/index/index.vue"]]);
 wx.createPage(MiniProgramPage);

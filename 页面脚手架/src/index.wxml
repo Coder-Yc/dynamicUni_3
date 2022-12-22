@@ -1,5 +1,12 @@
 <view class="contain">
-    <text class="text" bindtap="clickName">test</text>
+    <view>11111111</view>
+
+    <button type="primary" disabled="true">页面主操作 Disabled</button>
+
+    <icon class="icon-box-img" type="success" size="93"></icon>
+
+    <input class="weui-input" auto-focus placeholder="将会获取焦点" />
+
     <scroll-view
         scroll-y="true"
         class="scroll-Y"
@@ -10,4 +17,24 @@
         <view id="demo2" class="scroll-view-item uni-bg-green">B</view>
         <view id="demo3" class="scroll-view-item uni-bg-blue">C</view>
     </scroll-view>
+
+    <swiper
+        class="swiper"
+        autoplay="{{ autoplay }}"
+        interval="{{ interval }}"
+        duration="{{ duration }}"
+    >
+        <swiper-item>
+            <view class="swiper-item" style="background-color: blue"></view>
+        </swiper-item>
+        <swiper-item>
+            <view class="swiper-item" style="background-color: red"></view>
+        </swiper-item>
+        <swiper-item>
+            <view class="swiper-item" style="background-color: black"></view>
+        </swiper-item>
+        <swiper-item>
+            <view class="swiper-item" style="background-color: green"></view>
+        </swiper-item>
+    </swiper>
 </view>

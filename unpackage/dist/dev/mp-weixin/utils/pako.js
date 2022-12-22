@@ -1074,840 +1074,852 @@ var exp = {};
   }, n.o = function(e2, t2) {
     return Object.prototype.hasOwnProperty.call(e2, t2);
   }, n.p = "", n.w = {}, n(n.s = 11);
-}([function(e, t, n) {
-  var r;
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  }), function(e2) {
-    e2[e2.simple = 0] = "simple", e2[e2.member = 1] = "member";
-  }(r || (r = {}));
-  var a = function() {
-    function e2(e3, t2) {
-      this.value = e3, this.kind = t2;
-    }
-    return Object.defineProperty(e2.prototype, "v", {
-      get: function() {
-        return this.value;
-      },
-      set: function(e3) {
-        if (this.kind === "const")
-          throw new TypeError("Assignment to constant variable");
-        this.value = e3;
-      },
-      enumerable: true,
-      configurable: true
-    }), e2;
-  }();
-  t.SimpleValue = a;
-  var o = function() {
-    function e2(e3, t2) {
-      this.obj = e3, this.name = t2;
-    }
-    return Object.defineProperty(e2.prototype, "v", {
-      get: function() {
-        return this.obj[this.name];
-      },
-      set: function(e3) {
-        this.obj[this.name] = e3;
-      },
-      enumerable: true,
-      configurable: true
-    }), e2;
-  }();
-  t.MemberValue = o, t.createSimpleValue = function(e2, t2) {
-    return t2 === void 0 && (t2 = "var"), new a(e2, t2);
-  }, t.createMemberValue = function(e2, t2) {
-    return new o(e2, t2);
-  };
-}, function(e, t, n) {
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var r = n(0), a = function() {
-    function e2(e3, t2) {
-      this.invasive = false, this.declaration = /* @__PURE__ */ Object.create(null), this.type = e3, this.outer = t2;
-    }
-    return e2.prototype.get = function(e3, t2) {
-      if (t2 === void 0 && (t2 = false), this.declaration[e3])
-        return this.declaration[e3];
-      if (this.outer)
-        return this.outer.get(e3, t2);
-      var n2 = this.sdGO.get(e3, t2);
-      if (n2)
-        return n2;
-      throw new ReferenceError(e3 + " is not defined");
-    }, e2.prototype.declare = function(e3, t2, n2) {
-      if (n2 === void 0 && (n2 = "var"), n2 === "var")
-        return this.varDeclare(e3, t2);
-      if (n2 === "let")
-        return this.letDeclare(e3, t2);
-      if (n2 === "const")
-        return this.constDeclare(e3, t2);
-      throw new Error("eapako: Invalid Variable Declaration Kind");
-    }, e2.prototype.varDeclare = function(e3, t2) {
-      for (var n2 = this; n2.outer && n2.type !== "function"; )
-        n2 = n2.outer;
-      return this.declaration[e3] = r.createSimpleValue(t2, "var"), this.declaration[e3];
-    }, e2.prototype.letDeclare = function(e3, t2) {
-      if (this.declaration[e3])
-        throw new SyntaxError("Id '" + e3 + "' has already been declared");
-      return this.declaration[e3] = r.createSimpleValue(t2, "let"), this.declaration[e3];
-    }, e2.prototype.constDeclare = function(e3, t2, n2) {
-      if (n2 === void 0 && (n2 = false), !n2 && this.declaration[e3])
-        throw new SyntaxError("Id '" + e3 + "' has already been declared");
-      return this.declaration[e3] = r.createSimpleValue(t2, "const"), this.declaration[e3];
-    }, e2;
-  }();
-  t.default = a;
-}, function(e, t, n) {
-  var r;
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  }), function(e2) {
-    e2[e2.Continue = 0] = "Continue", e2[e2.Break = 1] = "Break", e2[e2.Return = 2] = "Return";
-  }(r = t.SignalType || (t.SignalType = {}));
-  var a = function() {
-    function e2(e3, t2) {
-      this.type = e3, this.value = t2;
-    }
-    return e2.Continue = function(t2) {
-      return new e2(r.Continue, t2);
-    }, e2.Break = function(t2) {
-      return new e2(r.Break, t2);
-    }, e2.Return = function(t2) {
-      return new e2(r.Return, t2);
-    }, e2.isSignal = function(t2) {
-      return t2 instanceof e2;
-    }, e2.isContinue = function(t2) {
-      return t2 instanceof e2 && t2.type === r.Continue;
-    }, e2.isBreak = function(t2) {
-      return t2 instanceof e2 && t2.type === r.Break;
-    }, e2.isReturn = function(t2) {
-      return t2 instanceof e2 && t2.type === r.Return;
-    }, e2;
-  }();
-  t.default = a;
-}, function(e, t, n) {
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var r = {
-    Infinity: 1 / 0,
-    NaN: NaN,
-    undefined: void 0,
-    isFinite,
-    isNaN,
-    parseFloat,
-    parseInt,
-    decodeURI,
-    decodeURIComponent,
-    encodeURI,
-    encodeURIComponent,
-    escape,
-    unescape,
-    Object,
-    Function,
-    Boolean,
-    Error,
-    EvalError,
-    RangeError,
-    ReferenceError,
-    SyntaxError,
-    TypeError,
-    URIError,
-    Number,
-    Math,
-    Date,
-    String,
-    RegExp,
-    Array,
-    JSON
-  };
-  typeof eval != "undefined" && (r.eval = eval), typeof Symbol != "undefined" && (r.Symbol = Symbol), typeof Int8Array != "undefined" && (r.Int8Array = Int8Array), typeof Uint8Array != "undefined" && (r.Uint8Array = Uint8Array), typeof Uint8ClampedArray != "undefined" && (r.Uint8ClampedArray = Uint8ClampedArray), typeof Int16Array != "undefined" && (r.Int16Array = Int16Array), typeof Uint16Array != "undefined" && (r.Uint16Array = Uint16Array), typeof Int32Array != "undefined" && (r.Int32Array = Int32Array), typeof Uint32Array != "undefined" && (r.Uint32Array = Uint32Array), typeof Float32Array != "undefined" && (r.Float32Array = Float32Array), typeof Float64Array != "undefined" && (r.Float64Array = Float64Array), typeof ArrayBuffer != "undefined" && (r.ArrayBuffer = ArrayBuffer), typeof DataView != "undefined" && (r.DataView = DataView), typeof Map != "undefined" && (r.Map = Map), typeof Set != "undefined" && (r.Set = Set), typeof WeakMap != "undefined" && (r.WeakMap = WeakMap), typeof WeakSet != "undefined" && (r.WeakSet = WeakSet), typeof Promise != "undefined" && (r.Promise = Promise), typeof Reflect != "undefined" && (r.Reflect = Reflect), typeof Proxy != "undefined" && (r.Proxy = Proxy), typeof console != "undefined" && (r.console = console), typeof setTimeout != "undefined" && (r.setTimeout = setTimeout), typeof clearTimeout != "undefined" && (r.clearTimeout = clearTimeout), typeof setInterval != "undefined" && (r.setInterval = setInterval), typeof clearInterval != "undefined" && (r.clearInterval = clearInterval), t.default = r;
-}, function(e, t, n) {
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  }), t.slice = Array.prototype.slice, t.hop = Object.prototype.hasOwnProperty, t.toString = Object.prototype.toString;
-}, function(e, t, n) {
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var r = n(0), a = n(4), o = function() {
-    function e2(e3) {
-      this.sdGO = e3;
-    }
-    return e2.prototype.get = function(e3, t2) {
-      if (t2 === void 0 && (t2 = false), t2 || a.hop.call(this.sdGO, e3))
-        return r.createMemberValue(this.sdGO, e3);
-    }, e2.prototype.declare = function(e3, t2) {
-      this.sdGO[e3] = t2;
-    }, e2;
-  }();
-  t.default = o;
-}, function(e, t, n) {
-  var r = this && this.__importDefault || function(e2) {
-    return e2 && e2.__esModule ? e2 : {
-      default: e2
+}([
+  function(e, t, n) {
+    var r;
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    }), function(e2) {
+      e2[e2.simple = 0] = "simple", e2[e2.member = 1] = "member";
+    }(r || (r = {}));
+    var a = function() {
+      function e2(e3, t2) {
+        this.value = e3, this.kind = t2;
+      }
+      return Object.defineProperty(e2.prototype, "v", {
+        get: function() {
+          return this.value;
+        },
+        set: function(e3) {
+          if (this.kind === "const")
+            throw new TypeError("Assignment to constant variable");
+          this.value = e3;
+        },
+        enumerable: true,
+        configurable: true
+      }), e2;
+    }();
+    t.SimpleValue = a;
+    var o = function() {
+      function e2(e3, t2) {
+        this.obj = e3, this.name = t2;
+      }
+      return Object.defineProperty(e2.prototype, "v", {
+        get: function() {
+          return this.obj[this.name];
+        },
+        set: function(e3) {
+          this.obj[this.name] = e3;
+        },
+        enumerable: true,
+        configurable: true
+      }), e2;
+    }();
+    t.MemberValue = o, t.createSimpleValue = function(e2, t2) {
+      return t2 === void 0 && (t2 = "var"), new a(e2, t2);
+    }, t.createMemberValue = function(e2, t2) {
+      return new o(e2, t2);
     };
-  };
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var a = r(n(1)), o = function() {
-    function e2(e3, t2, n2) {
-      this.node = e3, this.scope = t2, this.evaluateMap = n2;
-    }
-    return e2.prototype.evaluate = function(t2, n2) {
-      n2 === void 0 && (n2 = {});
-      var r2 = new e2(t2, n2.scope || this.scope, this.evaluateMap);
-      r2.label = n2.label, r2.extra = n2.extra;
-      var a2 = this.evaluateMap[t2.type];
-      if (!a2)
-        throw new Error('eapako: Node type "' + t2.type + '" is not implemented');
-      return a2(r2);
-    }, e2.prototype.createBlockScope = function(e3) {
-      e3 === void 0 && (e3 = false);
-      var t2 = new a.default("block", this.scope);
-      return t2.invasive = e3, t2;
-    }, e2.prototype.createFunctionScope = function(e3) {
-      e3 === void 0 && (e3 = false);
-      var t2 = new a.default("function", this.scope);
-      return t2.invasive = e3, t2;
-    }, e2;
-  }();
-  t.default = o;
-}, function(e, t, n) {
-  var r = this && this.__importDefault || function(e2) {
-    return e2 && e2.__esModule ? e2 : {
-      default: e2
-    };
-  };
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var a = r(n(2));
-  t.ES = function(e2) {
-    return e2.evaluate(e2.node.expression, {
-      extra: e2.extra
+  },
+  function(e, t, n) {
+    Object.defineProperty(t, "__esModule", {
+      value: true
     });
-  }, t.BS = function(e2) {
-    var t2;
-    e2.scope.invasive ? (t2 = e2.scope).invasive = false : t2 = e2.createBlockScope();
-    for (var n2 = 0, r2 = e2.node.body; n2 < r2.length; n2++)
-      if ((f = r2[n2]).type === "FDt")
-        e2.evaluate(f, {
-          scope: t2
-        });
-      else if (f.type === "VD" && f.kind === "var")
-        for (var o = 0, i = f.declarations; o < i.length; o++) {
-          var u = i[o];
-          t2.varDeclare(u.id.name);
-        }
-    for (var l = 0, c = e2.node.body; l < c.length; l++) {
-      var f;
-      if ((f = c[l]).type !== "FDt") {
-        var s = e2.evaluate(f, {
-          scope: t2,
-          extra: e2.extra
-        });
-        if (a.default.isSignal(s))
-          return s;
+    var r = n(0), a = function() {
+      function e2(e3, t2) {
+        this.invasive = false, this.declaration = /* @__PURE__ */ Object.create(null), this.type = e3, this.outer = t2;
       }
-    }
-  }, t.AE = function(e2) {
-    for (var t2 = [], n2 = 0, r2 = e2.node.elements; n2 < r2.length; n2++) {
-      var a2 = r2[n2];
-      a2.type !== "SpreadElement" ? t2.push(e2.evaluate(a2)) : t2 = t2.concat(e2.evaluate(a2.argument));
-    }
-    return t2;
-  }, t.OE = function(e2) {
-    for (var t2 = {}, n2 = 0, r2 = e2.node.properties; n2 < r2.length; n2++) {
-      var a2 = r2[n2], o = void 0;
-      o = a2.computed ? a2.key.type === "Id" ? e2.scope.get(a2.key.name).v : e2.evaluate(a2.key) : a2.key.type === "Id" ? a2.key.name : a2.key.value;
-      var i = e2.evaluate(a2.value);
-      if (a2.kind === "init")
-        t2[o] = i;
-      else if (a2.kind === "get")
-        Object.defineProperty(t2, o, {
-          get: i
-        });
-      else {
-        if (a2.kind !== "set")
-          throw new Error('eapako: [OE] Unsupported property kind "' + a2.kind + '"');
-        Object.defineProperty(t2, o, {
-          set: i
-        });
+      return e2.prototype.get = function(e3, t2) {
+        if (t2 === void 0 && (t2 = false), this.declaration[e3])
+          return this.declaration[e3];
+        if (this.outer)
+          return this.outer.get(e3, t2);
+        var n2 = this.sdGO.get(e3, t2);
+        if (n2)
+          return n2;
+        throw new ReferenceError(e3 + " is not defined");
+      }, e2.prototype.declare = function(e3, t2, n2) {
+        if (n2 === void 0 && (n2 = "var"), n2 === "var")
+          return this.varDeclare(e3, t2);
+        if (n2 === "let")
+          return this.letDeclare(e3, t2);
+        if (n2 === "const")
+          return this.constDeclare(e3, t2);
+        throw new Error("eapako: Invalid Variable Declaration Kind");
+      }, e2.prototype.varDeclare = function(e3, t2) {
+        for (var n2 = this; n2.outer && n2.type !== "function"; )
+          n2 = n2.outer;
+        return this.declaration[e3] = r.createSimpleValue(t2, "var"), this.declaration[e3];
+      }, e2.prototype.letDeclare = function(e3, t2) {
+        if (this.declaration[e3])
+          throw new SyntaxError("Id '" + e3 + "' has already been declared");
+        return this.declaration[e3] = r.createSimpleValue(t2, "let"), this.declaration[e3];
+      }, e2.prototype.constDeclare = function(e3, t2, n2) {
+        if (n2 === void 0 && (n2 = false), !n2 && this.declaration[e3])
+          throw new SyntaxError("Id '" + e3 + "' has already been declared");
+        return this.declaration[e3] = r.createSimpleValue(t2, "const"), this.declaration[e3];
+      }, e2;
+    }();
+    t.default = a;
+  },
+  function(e, t, n) {
+    var r;
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    }), function(e2) {
+      e2[e2.Continue = 0] = "Continue", e2[e2.Break = 1] = "Break", e2[e2.Return = 2] = "Return";
+    }(r = t.SignalType || (t.SignalType = {}));
+    var a = function() {
+      function e2(e3, t2) {
+        this.type = e3, this.value = t2;
       }
-    }
-    return t2;
-  }, t.FE = function(e2) {
-    var t2, n2 = e2.node;
-    if (n2.generator)
-      throw new Error("eapako: Generator Function not implemented");
-    return t2 = function() {
-      var t3 = e2.createFunctionScope(true);
-      t3.constDeclare("this", this), t3.constDeclare("arguments", arguments), e2.extra && e2.extra.SuperClass && (e2.extra.isConstructor || e2.extra.isStaticMethod ? t3.constDeclare("@@eapako/super", e2.extra.SuperClass) : e2.extra.isMethod && t3.constDeclare("@@eapako/super", e2.extra.SuperClass.prototype));
-      for (var r2 = 0, o = n2.params.length; r2 < o; r2++) {
-        var i = n2.params[r2].name;
-        t3.varDeclare(i, arguments[r2]);
+      return e2.Continue = function(t2) {
+        return new e2(r.Continue, t2);
+      }, e2.Break = function(t2) {
+        return new e2(r.Break, t2);
+      }, e2.Return = function(t2) {
+        return new e2(r.Return, t2);
+      }, e2.isSignal = function(t2) {
+        return t2 instanceof e2;
+      }, e2.isContinue = function(t2) {
+        return t2 instanceof e2 && t2.type === r.Continue;
+      }, e2.isBreak = function(t2) {
+        return t2 instanceof e2 && t2.type === r.Break;
+      }, e2.isReturn = function(t2) {
+        return t2 instanceof e2 && t2.type === r.Return;
+      }, e2;
+    }();
+    t.default = a;
+  },
+  function(e, t, n) {
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    });
+    var r = {
+      Infinity: 1 / 0,
+      NaN: NaN,
+      undefined: void 0,
+      isFinite,
+      isNaN,
+      parseFloat,
+      parseInt,
+      decodeURI,
+      decodeURIComponent,
+      encodeURI,
+      encodeURIComponent,
+      escape,
+      unescape,
+      Object,
+      Function,
+      Boolean,
+      Error,
+      EvalError,
+      RangeError,
+      ReferenceError,
+      SyntaxError,
+      TypeError,
+      URIError,
+      Number,
+      Math,
+      Date,
+      String,
+      RegExp,
+      Array,
+      JSON
+    };
+    typeof eval != "undefined" && (r.eval = eval), typeof Symbol != "undefined" && (r.Symbol = Symbol), typeof Int8Array != "undefined" && (r.Int8Array = Int8Array), typeof Uint8Array != "undefined" && (r.Uint8Array = Uint8Array), typeof Uint8ClampedArray != "undefined" && (r.Uint8ClampedArray = Uint8ClampedArray), typeof Int16Array != "undefined" && (r.Int16Array = Int16Array), typeof Uint16Array != "undefined" && (r.Uint16Array = Uint16Array), typeof Int32Array != "undefined" && (r.Int32Array = Int32Array), typeof Uint32Array != "undefined" && (r.Uint32Array = Uint32Array), typeof Float32Array != "undefined" && (r.Float32Array = Float32Array), typeof Float64Array != "undefined" && (r.Float64Array = Float64Array), typeof ArrayBuffer != "undefined" && (r.ArrayBuffer = ArrayBuffer), typeof DataView != "undefined" && (r.DataView = DataView), typeof Map != "undefined" && (r.Map = Map), typeof Set != "undefined" && (r.Set = Set), typeof WeakMap != "undefined" && (r.WeakMap = WeakMap), typeof WeakSet != "undefined" && (r.WeakSet = WeakSet), typeof Promise != "undefined" && (r.Promise = Promise), typeof Reflect != "undefined" && (r.Reflect = Reflect), typeof Proxy != "undefined" && (r.Proxy = Proxy), typeof console != "undefined" && (r.console = console), typeof setTimeout != "undefined" && (r.setTimeout = setTimeout), typeof clearTimeout != "undefined" && (r.clearTimeout = clearTimeout), typeof setInterval != "undefined" && (r.setInterval = setInterval), typeof clearInterval != "undefined" && (r.clearInterval = clearInterval), t.default = r;
+  },
+  function(e, t, n) {
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    }), t.slice = Array.prototype.slice, t.hop = Object.prototype.hasOwnProperty, t.toString = Object.prototype.toString;
+  },
+  function(e, t, n) {
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    });
+    var r = n(0), a = n(4), o = function() {
+      function e2(e3) {
+        this.sdGO = e3;
       }
-      var u = e2.evaluate(n2.body, {
-        scope: t3,
+      return e2.prototype.get = function(e3, t2) {
+        if (t2 === void 0 && (t2 = false), t2 || a.hop.call(this.sdGO, e3))
+          return r.createMemberValue(this.sdGO, e3);
+      }, e2.prototype.declare = function(e3, t2) {
+        this.sdGO[e3] = t2;
+      }, e2;
+    }();
+    t.default = o;
+  },
+  function(e, t, n) {
+    var r = this && this.__importDefault || function(e2) {
+      return e2 && e2.__esModule ? e2 : {
+        default: e2
+      };
+    };
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    });
+    var a = r(n(1)), o = function() {
+      function e2(e3, t2, n2) {
+        this.node = e3, this.scope = t2, this.evaluateMap = n2;
+      }
+      return e2.prototype.evaluate = function(t2, n2) {
+        n2 === void 0 && (n2 = {});
+        var r2 = new e2(t2, n2.scope || this.scope, this.evaluateMap);
+        r2.label = n2.label, r2.extra = n2.extra;
+        var a2 = this.evaluateMap[t2.type];
+        if (!a2)
+          throw new Error('eapako: Node type "' + t2.type + '" is not implemented');
+        return a2(r2);
+      }, e2.prototype.createBlockScope = function(e3) {
+        e3 === void 0 && (e3 = false);
+        var t2 = new a.default("block", this.scope);
+        return t2.invasive = e3, t2;
+      }, e2.prototype.createFunctionScope = function(e3) {
+        e3 === void 0 && (e3 = false);
+        var t2 = new a.default("function", this.scope);
+        return t2.invasive = e3, t2;
+      }, e2;
+    }();
+    t.default = o;
+  },
+  function(e, t, n) {
+    var r = this && this.__importDefault || function(e2) {
+      return e2 && e2.__esModule ? e2 : {
+        default: e2
+      };
+    };
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    });
+    var a = r(n(2));
+    t.ES = function(e2) {
+      return e2.evaluate(e2.node.expression, {
         extra: e2.extra
       });
-      if (a.default.isReturn(u))
-        return u.value;
-    }, Object.defineProperties(t2, {
-      name: {
-        value: n2.id ? n2.id.name : ""
-      },
-      length: {
-        value: n2.params.length
-      }
-    }), t2;
-  }, t.ArrowFE = function(e2) {
-    var t2 = e2.node, n2 = function() {
-      for (var n3 = e2.createFunctionScope(true), r2 = 0, o = t2.params.length; r2 < o; r2++) {
-        var i = t2.params[r2].name;
-        n3.varDeclare(i, arguments[r2]);
-      }
-      var u = e2.evaluate(t2.body, {
-        scope: n3,
-        extra: e2.extra
-      });
-      if (a.default.isReturn(u))
-        return u.value;
-    };
-    return Object.defineProperties(n2, {
-      length: {
-        value: t2.params.length
-      }
-    }), n2;
-  };
-}, function(e, t, n) {
-  var r = this && this.__importDefault || function(e2) {
-    return e2 && e2.__esModule ? e2 : {
-      default: e2
-    };
-  };
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var a = n(0), o = r(n(2));
-  function i(e2) {
-    var t2 = e2.node, n2 = function() {
-      var n3 = e2.createFunctionScope(true);
-      n3.constDeclare("this", this), n3.constDeclare("arguments", arguments);
-      for (var r2 = 0, a2 = t2.params.length; r2 < a2; r2++) {
-        var i2 = t2.params[r2].name;
-        n3.varDeclare(i2, arguments[r2]);
-      }
-      var u2 = e2.evaluate(t2.body, {
-        scope: n3
-      });
-      if (o.default.isReturn(u2))
-        return u2.value;
-    };
-    return Object.defineProperties(n2, {
-      name: {
-        value: t2.id ? t2.id.name : ""
-      },
-      length: {
-        value: t2.params.length
-      }
-    }), n2;
-  }
-  t.Id = function(e2) {
-    if (e2.node.name !== "undefined")
-      return e2.scope.get(e2.node.name).v;
-  }, t.Ll = function(e2) {
-    return e2.node.value;
-  }, t.Program = function(e2) {
-    for (var t2 = 0, n2 = e2.node.body; t2 < n2.length; t2++) {
-      var r2 = n2[t2];
-      e2.evaluate(r2);
-    }
-  }, t.ES = function(e2) {
-    return e2.evaluate(e2.node.expression);
-  }, t.BS = function(e2) {
-    var t2;
-    e2.scope.invasive ? (t2 = e2.scope).invasive = false : t2 = e2.createBlockScope();
-    for (var n2 = 0, r2 = e2.node.body; n2 < r2.length; n2++)
-      if ((f2 = r2[n2]).type === "FDt")
-        e2.evaluate(f2, {
-          scope: t2
-        });
-      else if (f2.type === "VD" && f2.kind === "var")
-        for (var a2 = 0, i2 = f2.declarations; a2 < i2.length; a2++) {
-          var u2 = i2[a2];
-          t2.varDeclare(u2.id.name);
+    }, t.BS = function(e2) {
+      var t2;
+      e2.scope.invasive ? (t2 = e2.scope).invasive = false : t2 = e2.createBlockScope();
+      for (var n2 = 0, r2 = e2.node.body; n2 < r2.length; n2++)
+        if ((f = r2[n2]).type === "FDt")
+          e2.evaluate(f, {
+            scope: t2
+          });
+        else if (f.type === "VD" && f.kind === "var")
+          for (var o = 0, i = f.declarations; o < i.length; o++) {
+            var u = i[o];
+            t2.varDeclare(u.id.name);
+          }
+      for (var l = 0, c = e2.node.body; l < c.length; l++) {
+        var f;
+        if ((f = c[l]).type !== "FDt") {
+          var s = e2.evaluate(f, {
+            scope: t2,
+            extra: e2.extra
+          });
+          if (a.default.isSignal(s))
+            return s;
         }
-    for (var l2 = 0, c2 = e2.node.body; l2 < c2.length; l2++) {
-      var f2;
-      if ((f2 = c2[l2]).type !== "FDt") {
-        var s2 = e2.evaluate(f2, {
-          scope: t2
-        });
-        if (o.default.isSignal(s2))
-          return s2;
       }
-    }
-  }, t.EmptyStatement = function(e2) {
-  }, t.DebuggerStatement = function(e2) {
-  }, t.WithStatement = function(e2) {
-    throw new Error('eapako: "' + e2.node.type + '" not implemented');
-  }, t.ReturnStatement = function(e2) {
-    var t2;
-    return e2.node.argument && (t2 = e2.evaluate(e2.node.argument)), o.default.Return(t2);
-  }, t.LabeledStatement = function(e2) {
-    return e2.evaluate(e2.node.body, {
-      label: e2.node.label.name
-    });
-  }, t.BSs = function(e2) {
-    var t2;
-    return e2.node.label && (t2 = e2.node.label.name), o.default.Break(t2);
-  }, t.ContinueStatement = function(e2) {
-    var t2;
-    return e2.node.label && (t2 = e2.node.label.name), o.default.Continue(t2);
-  }, t.IfStatement = function(e2) {
-    return e2.evaluate(e2.node.test) ? e2.evaluate(e2.node.consequent) : e2.node.alternate ? e2.evaluate(e2.node.alternate) : void 0;
-  }, t.SS = function(e2) {
-    for (var t2 = e2.evaluate(e2.node.discriminant), n2 = false, r2 = 0, a2 = e2.node.cases; r2 < a2.length; r2++) {
-      var i2 = a2[r2];
-      if (n2 || i2.test && t2 !== e2.evaluate(i2.test) || (n2 = true), n2) {
-        var u2 = e2.evaluate(i2);
-        if (o.default.isBreak(u2))
-          break;
-        if (o.default.isContinue(u2))
-          continue;
-        if (o.default.isReturn(u2))
-          return u2;
-      }
-    }
-  }, t.SC = function(e2) {
-    for (var t2 = 0, n2 = e2.node.consequent; t2 < n2.length; t2++) {
-      var r2 = n2[t2], a2 = e2.evaluate(r2);
-      if (o.default.isSignal(a2))
-        return a2;
-    }
-  }, t.ThrowStatement = function(e2) {
-    throw e2.evaluate(e2.node.argument);
-  }, t.TryStatement = function(e2) {
-    var t2 = e2.node, n2 = t2.block, r2 = t2.handler, a2 = t2.finalizer;
-    try {
-      return e2.evaluate(n2);
-    } catch (t3) {
-      if (r2) {
-        var o2 = r2.param, i2 = e2.createBlockScope(true);
-        return i2.letDeclare(o2.name, t3), e2.evaluate(r2, {
-          scope: i2
-        });
-      }
-      throw t3;
-    } finally {
-      if (a2)
-        return e2.evaluate(a2);
-    }
-  }, t.CatchClause = function(e2) {
-    return e2.evaluate(e2.node.body);
-  }, t.WhileStatement = function(e2) {
-    for (; e2.evaluate(e2.node.test); ) {
-      var t2 = e2.evaluate(e2.node.body);
-      if (o.default.isSignal(t2)) {
-        if (o.default.isBreak(t2)) {
-          if (!t2.value || t2.value === e2.label)
-            break;
-        } else if (o.default.isContinue(t2) && (!t2.value || t2.value === e2.label))
-          continue;
-        return t2;
-      }
-    }
-  }, t.DoWhileStatement = function(e2) {
-    do {
-      var t2 = e2.evaluate(e2.node.body);
-      if (o.default.isSignal(t2)) {
-        if (o.default.isBreak(t2)) {
-          if (!t2.value || t2.value === e2.label)
-            break;
-        } else if (o.default.isContinue(t2) && (!t2.value || t2.value === e2.label))
-          continue;
-        return t2;
-      }
-    } while (e2.evaluate(e2.node.test));
-  }, t.FS = function(e2) {
-    var t2 = e2.node, n2 = e2.scope;
-    for (t2.init && t2.init.type === "VD" && (n2 = e2.createBlockScope()), t2.init && e2.evaluate(t2.init, {
-      scope: n2
-    }); !t2.test || e2.evaluate(t2.test, {
-      scope: n2
-    }); t2.update && e2.evaluate(t2.update, {
-      scope: n2
-    })) {
-      var r2 = e2.evaluate(t2.body, {
-        scope: n2
-      });
-      if (o.default.isSignal(r2)) {
-        if (o.default.isBreak(r2)) {
-          if (!r2.value || r2.value === e2.label)
-            break;
-        } else if (o.default.isContinue(r2) && (!r2.value || r2.value === e2.label))
-          continue;
-        return r2;
-      }
-    }
-  }, t.ForInStatement = function(e2) {
-    var t2, n2 = e2.node, r2 = n2.left, a2 = n2.right, i2 = n2.body, u2 = e2.scope;
-    if (r2.type === "VD") {
-      var l2 = r2.declarations[0].id;
-      t2 = u2.declare(l2.name, void 0, r2.kind);
-    } else {
-      if (r2.type !== "Id")
-        throw new Error('eapako: [ForInStatement] Unsupported left type "' + r2.type + '"');
-      t2 = u2.get(r2.name, true);
-    }
-    for (var c2 in e2.evaluate(a2)) {
-      t2.v = c2;
-      var f2 = e2.evaluate(i2, {
-        scope: u2
-      });
-      if (o.default.isSignal(f2)) {
-        if (o.default.isBreak(f2)) {
-          if (!f2.value || f2.value === e2.label)
-            break;
-        } else if (o.default.isContinue(f2) && (!f2.value || f2.value === e2.label))
-          continue;
-        return f2;
-      }
-    }
-  }, t.FDt = function(e2) {
-    var t2 = i(e2);
-    return e2.scope.varDeclare(e2.node.id.name, t2), t2;
-  }, t.VD = function(e2) {
-    for (var t2 = 0, n2 = e2.node.declarations; t2 < n2.length; t2++) {
-      var r2 = n2[t2], a2 = r2.id.name, o2 = r2.init ? e2.evaluate(r2.init) : void 0;
-      e2.scope.declare(a2, o2);
-    }
-  }, t.VDt = function(e2) {
-    throw new Error("eapako: [VDt] Should not happen");
-  }, t.ThisExpression = function(e2) {
-    var t2 = e2.scope.get("this");
-    return t2 ? t2.v : null;
-  }, t.AE = function(e2) {
-    return e2.node.elements.map(function(t2) {
-      return e2.evaluate(t2);
-    });
-  }, t.OE = function(e2) {
-    for (var t2 = {}, n2 = 0, r2 = e2.node.properties; n2 < r2.length; n2++) {
-      var a2 = r2[n2], o2 = void 0;
-      if (a2.key.type === "Ll")
-        o2 = a2.key.value;
-      else {
-        if (a2.key.type !== "Id")
-          throw new Error('eapako: [OE] Unsupported property key type "' + a2.key.type + '"');
-        o2 = a2.key.name;
-      }
-      t2[o2] = e2.evaluate(a2.value);
-    }
-    return t2;
-  }, t.Property = function(e2) {
-    throw new Error("eapako: [Property] Should not happen");
-  }, t.FE = i;
-  var u = {
-    "-": function(e2) {
-      return -e2.evaluate(e2.node.argument);
-    },
-    "+": function(e2) {
-      return +e2.evaluate(e2.node.argument);
-    },
-    "!": function(e2) {
-      return !e2.evaluate(e2.node.argument);
-    },
-    "~": function(e2) {
-      return ~e2.evaluate(e2.node.argument);
-    },
-    typeof: function(e2) {
-      if (e2.node.argument.type !== "Id")
-        return typeof e2.evaluate(e2.node.argument);
-      try {
-        var t2 = e2.scope.get(e2.node.argument.name);
-        return t2 ? typeof t2.v : "undefined";
-      } catch (t3) {
-        if (t3.message === e2.node.argument.name + " is not defined")
-          return "undefined";
-        throw t3;
-      }
-    },
-    void: function(e2) {
-      e2.evaluate(e2.node.argument);
-    },
-    delete: function(e2) {
-      var t2 = e2.node.argument;
-      return t2.type === "ME" ? delete e2.evaluate(t2.object)[f(t2, e2)] : t2.type !== "Id" && (t2.type === "Ll" || void 0);
-    }
-  };
-  t.UE = function(e2) {
-    return u[e2.node.operator](e2);
-  };
-  var l = {
-    "++": function(e2, t2) {
-      return t2 ? ++e2.v : e2.v++;
-    },
-    "--": function(e2, t2) {
-      return t2 ? --e2.v : e2.v--;
-    }
-  };
-  t.UEo = function(e2) {
-    var t2 = s(e2.node.argument, e2);
-    return l[e2.node.operator](t2, e2.node.prefix);
-  }, t.BEOperatorEvaluateMap = {
-    "==": function(e2, t2) {
-      return e2 == t2;
-    },
-    "!=": function(e2, t2) {
-      return e2 != t2;
-    },
-    "===": function(e2, t2) {
-      return e2 === t2;
-    },
-    "!==": function(e2, t2) {
-      return e2 !== t2;
-    },
-    "<": function(e2, t2) {
-      return e2 < t2;
-    },
-    "<=": function(e2, t2) {
-      return e2 <= t2;
-    },
-    ">": function(e2, t2) {
-      return e2 > t2;
-    },
-    ">=": function(e2, t2) {
-      return e2 >= t2;
-    },
-    "<<": function(e2, t2) {
-      return e2 << t2;
-    },
-    ">>": function(e2, t2) {
-      return e2 >> t2;
-    },
-    ">>>": function(e2, t2) {
-      return e2 >>> t2;
-    },
-    "+": function(e2, t2) {
-      return e2 + t2;
-    },
-    "-": function(e2, t2) {
-      return e2 - t2;
-    },
-    "*": function(e2, t2) {
-      return e2 * t2;
-    },
-    "/": function(e2, t2) {
-      return e2 / t2;
-    },
-    "%": function(e2, t2) {
-      return e2 % t2;
-    },
-    "**": function(e2, t2) {
-      throw new Error('eapako: es5 not support operator "**"');
-    },
-    "|": function(e2, t2) {
-      return e2 | t2;
-    },
-    "^": function(e2, t2) {
-      return e2 ^ t2;
-    },
-    "&": function(e2, t2) {
-      return e2 & t2;
-    },
-    in: function(e2, t2) {
-      return e2 in t2;
-    },
-    instanceof: function(e2, t2) {
-      return e2 instanceof t2;
-    }
-  }, t.BE = function(e2) {
-    var n2 = e2.evaluate(e2.node.left), r2 = e2.evaluate(e2.node.right);
-    return t.BEOperatorEvaluateMap[e2.node.operator](n2, r2);
-  }, t.AEoOperatorEvaluateMap = {
-    "=": function(e2, t2) {
-      return e2.v = t2;
-    },
-    "+=": function(e2, t2) {
-      return e2.v += t2;
-    },
-    "-=": function(e2, t2) {
-      return e2.v -= t2;
-    },
-    "*=": function(e2, t2) {
-      return e2.v *= t2;
-    },
-    "/=": function(e2, t2) {
-      return e2.v /= t2;
-    },
-    "%=": function(e2, t2) {
-      return e2.v %= t2;
-    },
-    "**=": function(e2, t2) {
-      throw new Error('eapako: es5 not support operator "**=');
-    },
-    "<<=": function(e2, t2) {
-      return e2.v <<= t2;
-    },
-    ">>=": function(e2, t2) {
-      return e2.v >>= t2;
-    },
-    ">>>=": function(e2, t2) {
-      return e2.v >>>= t2;
-    },
-    "|=": function(e2, t2) {
-      return e2.v |= t2;
-    },
-    "^=": function(e2, t2) {
-      return e2.v ^= t2;
-    },
-    "&=": function(e2, t2) {
-      return e2.v &= t2;
-    }
-  }, t.AEo = function(e2) {
-    var n2 = e2.node, r2 = s(n2.left, e2, n2.operator === "=");
-    return t.AEoOperatorEvaluateMap[n2.operator](r2, e2.evaluate(n2.right));
-  };
-  var c = {
-    "||": function(e2, t2) {
-      return e2 || t2;
-    },
-    "&&": function(e2, t2) {
-      return e2 && t2;
-    }
-  };
-  function f(e2, t2) {
-    return e2.computed ? t2.evaluate(e2.property) : e2.property.name;
-  }
-  function s(e2, t2, n2) {
-    if (n2 === void 0 && (n2 = false), e2.type === "Id")
-      return t2.scope.get(e2.name, n2);
-    if (e2.type === "ME") {
-      var r2 = t2.evaluate(e2.object), o2 = f(e2, t2);
-      return a.createMemberValue(r2, o2);
-    }
-    throw new Error('eapako: Not support to get value of node type "' + e2.type + '"');
-  }
-  t.LE = function(e2) {
-    var t2 = e2.evaluate(e2.node.left), n2 = e2.evaluate(e2.node.right);
-    return c[e2.node.operator](t2, n2);
-  }, t.ME = function(e2) {
-    return e2.evaluate(e2.node.object)[f(e2.node, e2)];
-  }, t.CEo = function(e2) {
-    return e2.evaluate(e2.node.test) ? e2.evaluate(e2.node.consequent) : e2.evaluate(e2.node.alternate);
-  }, t.CE = function(e2) {
-    var t2, n2 = e2.evaluate(e2.node.callee), r2 = e2.node.arguments.map(function(t3) {
-      return e2.evaluate(t3);
-    });
-    return e2.node.callee.type == "ME" && (t2 = e2.evaluate(e2.node.callee.object)), n2.apply(t2, r2);
-  }, t.NewExpression = function(e2) {
-    var t2 = e2.evaluate(e2.node.callee), n2 = e2.node.arguments.map(function(t3) {
-      return e2.evaluate(t3);
-    });
-    return new (t2.bind.apply(t2, [null].concat(n2)))();
-  }, t.SequenceExpression = function(e2) {
-    for (var t2, n2 = 0, r2 = e2.node.expressions; n2 < r2.length; n2++) {
-      var a2 = r2[n2];
-      t2 = e2.evaluate(a2);
-    }
-    return t2;
-  }, t.getPropertyName = f, t.getIdOrMEValue = s;
-}, function(e, t, n) {
-  var r = this && this.__assign || Object.assign || function(e2) {
-    for (var t2, n2 = 1, r2 = arguments.length; n2 < r2; n2++)
-      for (var a2 in t2 = arguments[n2])
-        Object.prototype.hasOwnProperty.call(t2, a2) && (e2[a2] = t2[a2]);
-    return e2;
-  }, a = this && this.__importStar || function(e2) {
-    if (e2 && e2.__esModule)
-      return e2;
-    var t2 = {};
-    if (e2 != null)
-      for (var n2 in e2)
-        Object.hasOwnProperty.call(e2, n2) && (t2[n2] = e2[n2]);
-    return t2.default = e2, t2;
-  };
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var o = a(n(8)), i = {
-    5: o,
-    6: r({}, o, a(n(7)))
-  };
-  t.default = i;
-}, function(e, t, n) {
-  var r = this && this.__assign || Object.assign || function(e2) {
-    for (var t2, n2 = 1, r2 = arguments.length; n2 < r2; n2++)
-      for (var a2 in t2 = arguments[n2])
-        Object.prototype.hasOwnProperty.call(t2, a2) && (e2[a2] = t2[a2]);
-    return e2;
-  }, a = this && this.__importDefault || function(e2) {
-    return e2 && e2.__esModule ? e2 : {
-      default: e2
-    };
-  };
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var o = a(n(9)), i = a(n(6)), u = a(n(1)), l = a(n(5)), c = a(n(3)), f = n(0), s = {
-    es5: 5,
-    es2015: 6,
-    es2016: 7,
-    es2017: 8,
-    es2018: 9,
-    5: 5,
-    6: 6,
-    7: 7,
-    8: 8,
-    9: 9
-  }, d = function() {
-    function e2(e3, t2) {
-      t2 === void 0 && (t2 = {}), this.options = r({
-        ecmaVersion: 5,
-        sourceType: "module"
-      }, t2), this.options.ecmaVersion = s[this.options.ecmaVersion], this.ast = e3, this.evaluateMap = o.default[this.options.ecmaVersion];
-    }
-    return e2.prototype.goPako = function(e3) {
-      e3 === void 0 && (e3 = {});
-      var t2 = this.createGlobalScope(e3), n2 = new i.default(null, t2, this.evaluateMap);
-      if (this.options.sourceType === "module") {
-        var r2 = {}, a2 = {
-          exports: r2
-        };
-        return t2.declaration.exports = f.createSimpleValue(r2), t2.declaration.module = f.createSimpleValue(a2), n2.evaluate(this.ast), a2.exports;
-      }
-      return n2.evaluate(this.ast);
-    }, e2.prototype.createGlobalScope = function(e3) {
-      var t2 = new u.default("function");
-      t2.sdGO = new l.default(e3);
-      for (var n2 = Object.keys(e3), r2 = 0, a2 = Object.keys(c.default); r2 < a2.length; r2++) {
-        var o2 = a2[r2];
-        n2.indexOf(o2) < 0 && (t2.declaration[o2] = f.createSimpleValue(c.default[o2]));
+    }, t.AE = function(e2) {
+      for (var t2 = [], n2 = 0, r2 = e2.node.elements; n2 < r2.length; n2++) {
+        var a2 = r2[n2];
+        a2.type !== "SpreadElement" ? t2.push(e2.evaluate(a2)) : t2 = t2.concat(e2.evaluate(a2.argument));
       }
       return t2;
-    }, e2;
-  }();
-  t.default = d;
-}, function(e, t, n) {
-  var r = this && this.__importDefault || function(e2) {
-    return e2 && e2.__esModule ? e2 : {
-      default: e2
+    }, t.OE = function(e2) {
+      for (var t2 = {}, n2 = 0, r2 = e2.node.properties; n2 < r2.length; n2++) {
+        var a2 = r2[n2], o = void 0;
+        o = a2.computed ? a2.key.type === "Id" ? e2.scope.get(a2.key.name).v : e2.evaluate(a2.key) : a2.key.type === "Id" ? a2.key.name : a2.key.value;
+        var i = e2.evaluate(a2.value);
+        if (a2.kind === "init")
+          t2[o] = i;
+        else if (a2.kind === "get")
+          Object.defineProperty(t2, o, {
+            get: i
+          });
+        else {
+          if (a2.kind !== "set")
+            throw new Error('eapako: [OE] Unsupported property kind "' + a2.kind + '"');
+          Object.defineProperty(t2, o, {
+            set: i
+          });
+        }
+      }
+      return t2;
+    }, t.FE = function(e2) {
+      var t2, n2 = e2.node;
+      if (n2.generator)
+        throw new Error("eapako: Generator Function not implemented");
+      return t2 = function() {
+        var t3 = e2.createFunctionScope(true);
+        t3.constDeclare("this", this), t3.constDeclare("arguments", arguments), e2.extra && e2.extra.SuperClass && (e2.extra.isConstructor || e2.extra.isStaticMethod ? t3.constDeclare("@@eapako/super", e2.extra.SuperClass) : e2.extra.isMethod && t3.constDeclare("@@eapako/super", e2.extra.SuperClass.prototype));
+        for (var r2 = 0, o = n2.params.length; r2 < o; r2++) {
+          var i = n2.params[r2].name;
+          t3.varDeclare(i, arguments[r2]);
+        }
+        var u = e2.evaluate(n2.body, {
+          scope: t3,
+          extra: e2.extra
+        });
+        if (a.default.isReturn(u))
+          return u.value;
+      }, Object.defineProperties(t2, {
+        name: {
+          value: n2.id ? n2.id.name : ""
+        },
+        length: {
+          value: n2.params.length
+        }
+      }), t2;
+    }, t.ArrowFE = function(e2) {
+      var t2 = e2.node, n2 = function() {
+        for (var n3 = e2.createFunctionScope(true), r2 = 0, o = t2.params.length; r2 < o; r2++) {
+          var i = t2.params[r2].name;
+          n3.varDeclare(i, arguments[r2]);
+        }
+        var u = e2.evaluate(t2.body, {
+          scope: n3,
+          extra: e2.extra
+        });
+        if (a.default.isReturn(u))
+          return u.value;
+      };
+      return Object.defineProperties(n2, {
+        length: {
+          value: t2.params.length
+        }
+      }), n2;
     };
-  };
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var a = r(n(10));
-  t.goPako = function(e2, t2, n2) {
-    return new a.default(e2, n2).goPako(t2);
-  };
-}]));
-console.log(exp);
+  },
+  function(e, t, n) {
+    var r = this && this.__importDefault || function(e2) {
+      return e2 && e2.__esModule ? e2 : {
+        default: e2
+      };
+    };
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    });
+    var a = n(0), o = r(n(2));
+    function i(e2) {
+      var t2 = e2.node, n2 = function() {
+        var n3 = e2.createFunctionScope(true);
+        n3.constDeclare("this", this), n3.constDeclare("arguments", arguments);
+        for (var r2 = 0, a2 = t2.params.length; r2 < a2; r2++) {
+          var i2 = t2.params[r2].name;
+          n3.varDeclare(i2, arguments[r2]);
+        }
+        var u2 = e2.evaluate(t2.body, {
+          scope: n3
+        });
+        if (o.default.isReturn(u2))
+          return u2.value;
+      };
+      return Object.defineProperties(n2, {
+        name: {
+          value: t2.id ? t2.id.name : ""
+        },
+        length: {
+          value: t2.params.length
+        }
+      }), n2;
+    }
+    t.Id = function(e2) {
+      if (e2.node.name !== "undefined")
+        return e2.scope.get(e2.node.name).v;
+    }, t.Ll = function(e2) {
+      return e2.node.value;
+    }, t.Program = function(e2) {
+      for (var t2 = 0, n2 = e2.node.body; t2 < n2.length; t2++) {
+        var r2 = n2[t2];
+        e2.evaluate(r2);
+      }
+    }, t.ES = function(e2) {
+      return e2.evaluate(e2.node.expression);
+    }, t.BS = function(e2) {
+      var t2;
+      e2.scope.invasive ? (t2 = e2.scope).invasive = false : t2 = e2.createBlockScope();
+      for (var n2 = 0, r2 = e2.node.body; n2 < r2.length; n2++)
+        if ((f2 = r2[n2]).type === "FDt")
+          e2.evaluate(f2, {
+            scope: t2
+          });
+        else if (f2.type === "VD" && f2.kind === "var")
+          for (var a2 = 0, i2 = f2.declarations; a2 < i2.length; a2++) {
+            var u2 = i2[a2];
+            t2.varDeclare(u2.id.name);
+          }
+      for (var l2 = 0, c2 = e2.node.body; l2 < c2.length; l2++) {
+        var f2;
+        if ((f2 = c2[l2]).type !== "FDt") {
+          var s2 = e2.evaluate(f2, {
+            scope: t2
+          });
+          if (o.default.isSignal(s2))
+            return s2;
+        }
+      }
+    }, t.EmptyStatement = function(e2) {
+    }, t.DebuggerStatement = function(e2) {
+    }, t.WithStatement = function(e2) {
+      throw new Error('eapako: "' + e2.node.type + '" not implemented');
+    }, t.ReturnStatement = function(e2) {
+      var t2;
+      return e2.node.argument && (t2 = e2.evaluate(e2.node.argument)), o.default.Return(t2);
+    }, t.LabeledStatement = function(e2) {
+      return e2.evaluate(e2.node.body, {
+        label: e2.node.label.name
+      });
+    }, t.BSs = function(e2) {
+      var t2;
+      return e2.node.label && (t2 = e2.node.label.name), o.default.Break(t2);
+    }, t.ContinueStatement = function(e2) {
+      var t2;
+      return e2.node.label && (t2 = e2.node.label.name), o.default.Continue(t2);
+    }, t.IfStatement = function(e2) {
+      return e2.evaluate(e2.node.test) ? e2.evaluate(e2.node.consequent) : e2.node.alternate ? e2.evaluate(e2.node.alternate) : void 0;
+    }, t.SS = function(e2) {
+      for (var t2 = e2.evaluate(e2.node.discriminant), n2 = false, r2 = 0, a2 = e2.node.cases; r2 < a2.length; r2++) {
+        var i2 = a2[r2];
+        if (n2 || i2.test && t2 !== e2.evaluate(i2.test) || (n2 = true), n2) {
+          var u2 = e2.evaluate(i2);
+          if (o.default.isBreak(u2))
+            break;
+          if (o.default.isContinue(u2))
+            continue;
+          if (o.default.isReturn(u2))
+            return u2;
+        }
+      }
+    }, t.SC = function(e2) {
+      for (var t2 = 0, n2 = e2.node.consequent; t2 < n2.length; t2++) {
+        var r2 = n2[t2], a2 = e2.evaluate(r2);
+        if (o.default.isSignal(a2))
+          return a2;
+      }
+    }, t.ThrowStatement = function(e2) {
+      throw e2.evaluate(e2.node.argument);
+    }, t.TryStatement = function(e2) {
+      var t2 = e2.node, n2 = t2.block, r2 = t2.handler, a2 = t2.finalizer;
+      try {
+        return e2.evaluate(n2);
+      } catch (t3) {
+        if (r2) {
+          var o2 = r2.param, i2 = e2.createBlockScope(true);
+          return i2.letDeclare(o2.name, t3), e2.evaluate(r2, {
+            scope: i2
+          });
+        }
+        throw t3;
+      } finally {
+        if (a2)
+          return e2.evaluate(a2);
+      }
+    }, t.CatchClause = function(e2) {
+      return e2.evaluate(e2.node.body);
+    }, t.WhileStatement = function(e2) {
+      for (; e2.evaluate(e2.node.test); ) {
+        var t2 = e2.evaluate(e2.node.body);
+        if (o.default.isSignal(t2)) {
+          if (o.default.isBreak(t2)) {
+            if (!t2.value || t2.value === e2.label)
+              break;
+          } else if (o.default.isContinue(t2) && (!t2.value || t2.value === e2.label))
+            continue;
+          return t2;
+        }
+      }
+    }, t.DoWhileStatement = function(e2) {
+      do {
+        var t2 = e2.evaluate(e2.node.body);
+        if (o.default.isSignal(t2)) {
+          if (o.default.isBreak(t2)) {
+            if (!t2.value || t2.value === e2.label)
+              break;
+          } else if (o.default.isContinue(t2) && (!t2.value || t2.value === e2.label))
+            continue;
+          return t2;
+        }
+      } while (e2.evaluate(e2.node.test));
+    }, t.FS = function(e2) {
+      var t2 = e2.node, n2 = e2.scope;
+      for (t2.init && t2.init.type === "VD" && (n2 = e2.createBlockScope()), t2.init && e2.evaluate(t2.init, {
+        scope: n2
+      }); !t2.test || e2.evaluate(t2.test, {
+        scope: n2
+      }); t2.update && e2.evaluate(t2.update, {
+        scope: n2
+      })) {
+        var r2 = e2.evaluate(t2.body, {
+          scope: n2
+        });
+        if (o.default.isSignal(r2)) {
+          if (o.default.isBreak(r2)) {
+            if (!r2.value || r2.value === e2.label)
+              break;
+          } else if (o.default.isContinue(r2) && (!r2.value || r2.value === e2.label))
+            continue;
+          return r2;
+        }
+      }
+    }, t.ForInStatement = function(e2) {
+      var t2, n2 = e2.node, r2 = n2.left, a2 = n2.right, i2 = n2.body, u2 = e2.scope;
+      if (r2.type === "VD") {
+        var l2 = r2.declarations[0].id;
+        t2 = u2.declare(l2.name, void 0, r2.kind);
+      } else {
+        if (r2.type !== "Id")
+          throw new Error('eapako: [ForInStatement] Unsupported left type "' + r2.type + '"');
+        t2 = u2.get(r2.name, true);
+      }
+      for (var c2 in e2.evaluate(a2)) {
+        t2.v = c2;
+        var f2 = e2.evaluate(i2, {
+          scope: u2
+        });
+        if (o.default.isSignal(f2)) {
+          if (o.default.isBreak(f2)) {
+            if (!f2.value || f2.value === e2.label)
+              break;
+          } else if (o.default.isContinue(f2) && (!f2.value || f2.value === e2.label))
+            continue;
+          return f2;
+        }
+      }
+    }, t.FDt = function(e2) {
+      var t2 = i(e2);
+      return e2.scope.varDeclare(e2.node.id.name, t2), t2;
+    }, t.VD = function(e2) {
+      for (var t2 = 0, n2 = e2.node.declarations; t2 < n2.length; t2++) {
+        var r2 = n2[t2], a2 = r2.id.name, o2 = r2.init ? e2.evaluate(r2.init) : void 0;
+        e2.scope.declare(a2, o2);
+      }
+    }, t.VDt = function(e2) {
+      throw new Error("eapako: [VDt] Should not happen");
+    }, t.ThisExpression = function(e2) {
+      var t2 = e2.scope.get("this");
+      return t2 ? t2.v : null;
+    }, t.AE = function(e2) {
+      return e2.node.elements.map(function(t2) {
+        return e2.evaluate(t2);
+      });
+    }, t.OE = function(e2) {
+      for (var t2 = {}, n2 = 0, r2 = e2.node.properties; n2 < r2.length; n2++) {
+        var a2 = r2[n2], o2 = void 0;
+        if (a2.key.type === "Ll")
+          o2 = a2.key.value;
+        else {
+          if (a2.key.type !== "Id")
+            throw new Error('eapako: [OE] Unsupported property key type "' + a2.key.type + '"');
+          o2 = a2.key.name;
+        }
+        t2[o2] = e2.evaluate(a2.value);
+      }
+      return t2;
+    }, t.Property = function(e2) {
+      throw new Error("eapako: [Property] Should not happen");
+    }, t.FE = i;
+    var u = {
+      "-": function(e2) {
+        return -e2.evaluate(e2.node.argument);
+      },
+      "+": function(e2) {
+        return +e2.evaluate(e2.node.argument);
+      },
+      "!": function(e2) {
+        return !e2.evaluate(e2.node.argument);
+      },
+      "~": function(e2) {
+        return ~e2.evaluate(e2.node.argument);
+      },
+      typeof: function(e2) {
+        if (e2.node.argument.type !== "Id")
+          return typeof e2.evaluate(e2.node.argument);
+        try {
+          var t2 = e2.scope.get(e2.node.argument.name);
+          return t2 ? typeof t2.v : "undefined";
+        } catch (t3) {
+          if (t3.message === e2.node.argument.name + " is not defined")
+            return "undefined";
+          throw t3;
+        }
+      },
+      void: function(e2) {
+        e2.evaluate(e2.node.argument);
+      },
+      delete: function(e2) {
+        var t2 = e2.node.argument;
+        return t2.type === "ME" ? delete e2.evaluate(t2.object)[f(t2, e2)] : t2.type !== "Id" && (t2.type === "Ll" || void 0);
+      }
+    };
+    t.UE = function(e2) {
+      return u[e2.node.operator](e2);
+    };
+    var l = {
+      "++": function(e2, t2) {
+        return t2 ? ++e2.v : e2.v++;
+      },
+      "--": function(e2, t2) {
+        return t2 ? --e2.v : e2.v--;
+      }
+    };
+    t.UEo = function(e2) {
+      var t2 = s(e2.node.argument, e2);
+      return l[e2.node.operator](t2, e2.node.prefix);
+    }, t.BEOperatorEvaluateMap = {
+      "==": function(e2, t2) {
+        return e2 == t2;
+      },
+      "!=": function(e2, t2) {
+        return e2 != t2;
+      },
+      "===": function(e2, t2) {
+        return e2 === t2;
+      },
+      "!==": function(e2, t2) {
+        return e2 !== t2;
+      },
+      "<": function(e2, t2) {
+        return e2 < t2;
+      },
+      "<=": function(e2, t2) {
+        return e2 <= t2;
+      },
+      ">": function(e2, t2) {
+        return e2 > t2;
+      },
+      ">=": function(e2, t2) {
+        return e2 >= t2;
+      },
+      "<<": function(e2, t2) {
+        return e2 << t2;
+      },
+      ">>": function(e2, t2) {
+        return e2 >> t2;
+      },
+      ">>>": function(e2, t2) {
+        return e2 >>> t2;
+      },
+      "+": function(e2, t2) {
+        return e2 + t2;
+      },
+      "-": function(e2, t2) {
+        return e2 - t2;
+      },
+      "*": function(e2, t2) {
+        return e2 * t2;
+      },
+      "/": function(e2, t2) {
+        return e2 / t2;
+      },
+      "%": function(e2, t2) {
+        return e2 % t2;
+      },
+      "**": function(e2, t2) {
+        throw new Error('eapako: es5 not support operator "**"');
+      },
+      "|": function(e2, t2) {
+        return e2 | t2;
+      },
+      "^": function(e2, t2) {
+        return e2 ^ t2;
+      },
+      "&": function(e2, t2) {
+        return e2 & t2;
+      },
+      in: function(e2, t2) {
+        return e2 in t2;
+      },
+      instanceof: function(e2, t2) {
+        return e2 instanceof t2;
+      }
+    }, t.BE = function(e2) {
+      var n2 = e2.evaluate(e2.node.left), r2 = e2.evaluate(e2.node.right);
+      return t.BEOperatorEvaluateMap[e2.node.operator](n2, r2);
+    }, t.AEoOperatorEvaluateMap = {
+      "=": function(e2, t2) {
+        return e2.v = t2;
+      },
+      "+=": function(e2, t2) {
+        return e2.v += t2;
+      },
+      "-=": function(e2, t2) {
+        return e2.v -= t2;
+      },
+      "*=": function(e2, t2) {
+        return e2.v *= t2;
+      },
+      "/=": function(e2, t2) {
+        return e2.v /= t2;
+      },
+      "%=": function(e2, t2) {
+        return e2.v %= t2;
+      },
+      "**=": function(e2, t2) {
+        throw new Error('eapako: es5 not support operator "**=');
+      },
+      "<<=": function(e2, t2) {
+        return e2.v <<= t2;
+      },
+      ">>=": function(e2, t2) {
+        return e2.v >>= t2;
+      },
+      ">>>=": function(e2, t2) {
+        return e2.v >>>= t2;
+      },
+      "|=": function(e2, t2) {
+        return e2.v |= t2;
+      },
+      "^=": function(e2, t2) {
+        return e2.v ^= t2;
+      },
+      "&=": function(e2, t2) {
+        return e2.v &= t2;
+      }
+    }, t.AEo = function(e2) {
+      var n2 = e2.node, r2 = s(n2.left, e2, n2.operator === "=");
+      return t.AEoOperatorEvaluateMap[n2.operator](r2, e2.evaluate(n2.right));
+    };
+    var c = {
+      "||": function(e2, t2) {
+        return e2 || t2;
+      },
+      "&&": function(e2, t2) {
+        return e2 && t2;
+      }
+    };
+    function f(e2, t2) {
+      return e2.computed ? t2.evaluate(e2.property) : e2.property.name;
+    }
+    function s(e2, t2, n2) {
+      if (n2 === void 0 && (n2 = false), e2.type === "Id")
+        return t2.scope.get(e2.name, n2);
+      if (e2.type === "ME") {
+        var r2 = t2.evaluate(e2.object), o2 = f(e2, t2);
+        return a.createMemberValue(r2, o2);
+      }
+      throw new Error('eapako: Not support to get value of node type "' + e2.type + '"');
+    }
+    t.LE = function(e2) {
+      var t2 = e2.evaluate(e2.node.left), n2 = e2.evaluate(e2.node.right);
+      return c[e2.node.operator](t2, n2);
+    }, t.ME = function(e2) {
+      return e2.evaluate(e2.node.object)[f(e2.node, e2)];
+    }, t.CEo = function(e2) {
+      return e2.evaluate(e2.node.test) ? e2.evaluate(e2.node.consequent) : e2.evaluate(e2.node.alternate);
+    }, t.CE = function(e2) {
+      var t2, n2 = e2.evaluate(e2.node.callee), r2 = e2.node.arguments.map(function(t3) {
+        return e2.evaluate(t3);
+      });
+      return e2.node.callee.type == "ME" && (t2 = e2.evaluate(e2.node.callee.object)), n2.apply(t2, r2);
+    }, t.NewExpression = function(e2) {
+      var t2 = e2.evaluate(e2.node.callee), n2 = e2.node.arguments.map(function(t3) {
+        return e2.evaluate(t3);
+      });
+      return new (t2.bind.apply(t2, [null].concat(n2)))();
+    }, t.SequenceExpression = function(e2) {
+      for (var t2, n2 = 0, r2 = e2.node.expressions; n2 < r2.length; n2++) {
+        var a2 = r2[n2];
+        t2 = e2.evaluate(a2);
+      }
+      return t2;
+    }, t.getPropertyName = f, t.getIdOrMEValue = s;
+  },
+  function(e, t, n) {
+    var r = this && this.__assign || Object.assign || function(e2) {
+      for (var t2, n2 = 1, r2 = arguments.length; n2 < r2; n2++)
+        for (var a2 in t2 = arguments[n2])
+          Object.prototype.hasOwnProperty.call(t2, a2) && (e2[a2] = t2[a2]);
+      return e2;
+    }, a = this && this.__importStar || function(e2) {
+      if (e2 && e2.__esModule)
+        return e2;
+      var t2 = {};
+      if (e2 != null)
+        for (var n2 in e2)
+          Object.hasOwnProperty.call(e2, n2) && (t2[n2] = e2[n2]);
+      return t2.default = e2, t2;
+    };
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    });
+    var o = a(n(8)), i = {
+      5: o,
+      6: r({}, o, a(n(7)))
+    };
+    t.default = i;
+  },
+  function(e, t, n) {
+    var r = this && this.__assign || Object.assign || function(e2) {
+      for (var t2, n2 = 1, r2 = arguments.length; n2 < r2; n2++)
+        for (var a2 in t2 = arguments[n2])
+          Object.prototype.hasOwnProperty.call(t2, a2) && (e2[a2] = t2[a2]);
+      return e2;
+    }, a = this && this.__importDefault || function(e2) {
+      return e2 && e2.__esModule ? e2 : {
+        default: e2
+      };
+    };
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    });
+    var o = a(n(9)), i = a(n(6)), u = a(n(1)), l = a(n(5)), c = a(n(3)), f = n(0), s = {
+      es5: 5,
+      es2015: 6,
+      es2016: 7,
+      es2017: 8,
+      es2018: 9,
+      5: 5,
+      6: 6,
+      7: 7,
+      8: 8,
+      9: 9
+    }, d = function() {
+      function e2(e3, t2) {
+        t2 === void 0 && (t2 = {}), this.options = r({
+          ecmaVersion: 5,
+          sourceType: "module"
+        }, t2), this.options.ecmaVersion = s[this.options.ecmaVersion], this.ast = e3, this.evaluateMap = o.default[this.options.ecmaVersion];
+      }
+      return e2.prototype.goPako = function(e3) {
+        e3 === void 0 && (e3 = {});
+        var t2 = this.createGlobalScope(e3), n2 = new i.default(null, t2, this.evaluateMap);
+        if (this.options.sourceType === "module") {
+          var r2 = {}, a2 = {
+            exports: r2
+          };
+          return t2.declaration.exports = f.createSimpleValue(r2), t2.declaration.module = f.createSimpleValue(a2), n2.evaluate(this.ast), a2.exports;
+        }
+        return n2.evaluate(this.ast);
+      }, e2.prototype.createGlobalScope = function(e3) {
+        var t2 = new u.default("function");
+        t2.sdGO = new l.default(e3);
+        for (var n2 = Object.keys(e3), r2 = 0, a2 = Object.keys(c.default); r2 < a2.length; r2++) {
+          var o2 = a2[r2];
+          n2.indexOf(o2) < 0 && (t2.declaration[o2] = f.createSimpleValue(c.default[o2]));
+        }
+        return t2;
+      }, e2;
+    }();
+    t.default = d;
+  },
+  function(e, t, n) {
+    var r = this && this.__importDefault || function(e2) {
+      return e2 && e2.__esModule ? e2 : {
+        default: e2
+      };
+    };
+    Object.defineProperty(t, "__esModule", {
+      value: true
+    });
+    var a = r(n(10));
+    t.goPako = function(e2, t2, n2) {
+      return new a.default(e2, n2).goPako(t2);
+    };
+  }
+]));
 var pako = {
   goPako: exp.goPako,
   inflate: exp.inflate

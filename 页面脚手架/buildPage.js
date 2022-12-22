@@ -16,8 +16,9 @@ var base64img = function (file) {
 
 // 运行转译过程
 function AstRead(html, css, js, otherCss, darkCss) {
+    // console.log(html);
     css = css ? css : ".page{}";
-    html = html.replaceAll(`"`, `'`);
+    // html = html.replaceAll(`"`, `'`);
     let options = {
         url: "index.css",
     };
@@ -268,7 +269,18 @@ setdata: function setdata(dictData) {
     });
 }
 
-let SPECIAL_PROPERTIES = ["bindtap", 'bindscroll', 'bindscrolltoupper', 'bindscrolltolower'];
+let SPECIAL_PROPERTIES = [
+    "bindtap",
+    "bindscroll",
+    "bindscrolltoupper",
+    "bindscrolltolower",
+    "autoplay",
+    "interval",
+    "duration",
+    "indicator-dots ",
+    "wx:for",
+    "wx:if",
+];
 
 function parseTag(tag) {
     let res = {
@@ -313,10 +325,25 @@ function parseTag(tag) {
                 let test = c[0];
                 if (SPECIAL_PROPERTIES.includes(test.replace(" ", ""))) {
                     let name = transformFun(test);
-                    // console.log("111111111111111111", name);
+                    //删除原本的key
                     delete res[c[0]];
-                    res[` ${name}`] = c[1].replace('"', "").replace('"', "");
+
+                    let match_res = c[1].match(/\{\{(.+?)\}\}/);
+                    let FORIF = ["wx:for", "wx:if"];
+                    if (!match_res) {
+                        res[` ${name}`] = c[1]
+                            .replace('"', "")
+                            .replace('"', "");
+                    } else if (FORIF.includes(c[0])) {
+                        console.log("!!!!!!!!!!!!!!");
+                    } else {
+                        res[` ${name}`] = match_res[0]
+                            .slice(2, -2)
+                            .replace('"', "")
+                            .replace('"', "");
+                    }
                 }
+                console.log("@@@@@@@@@@@@@", res);
             }
         }
     }
@@ -324,7 +351,7 @@ function parseTag(tag) {
     if (tag.match(/wx:else/)) {
         res["wx:else"] = "";
     }
-    console.log(JSON.parse(JSON.stringify(res, null, 2)));
+    // console.log(JSON.parse(JSON.stringify(res, null, 2)));
     return res;
 }
 

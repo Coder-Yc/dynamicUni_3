@@ -5,7 +5,7 @@ fs.readFile("dist/index.json", (err, buffer) => {
     // console.log(str);
     let str = `
     <template>
-        <templateCom :data="html"></templateCom>
+        <templateCom :data="html" :dataInfo="dataInfo"></templateCom>
     </template>
 
     <script>
@@ -18,7 +18,8 @@ fs.readFile("dist/index.json", (err, buffer) => {
             templateCom,
         },
         setup() {
-            let html = ref("undefind");
+            let html = ref([]);
+            let dataInfo = ref({});
             let { proxy } = getCurrentInstance();
             let _this = proxy
             const tychange = (typeofData) => {
@@ -147,6 +148,7 @@ fs.readFile("dist/index.json", (err, buffer) => {
 							});
                             _this[key] = method[key];
                         }
+                        dataInfo.value = method["data"];
                         _this.onLoad();
                         // console.log(this);
                     } catch (err) {
@@ -154,7 +156,7 @@ fs.readFile("dist/index.json", (err, buffer) => {
                     }
                 }
             });
-            return { tychange, parseTag, parse, html };
+            return { tychange, parseTag, parse, html,dataInfo };
         },
     };
     </script>

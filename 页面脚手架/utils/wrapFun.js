@@ -1,5 +1,5 @@
 let transformFun = function (fn) {
-    console.log("111111111111111111", fn);
+    // console.log("111111111111111111", fn);
     switch (fn.trim()) {
         case "bindtap":
             return "@tap";
@@ -9,6 +9,14 @@ let transformFun = function (fn) {
             return "@scrolltoupper";
         case "bindscrolltolower":
             return "@scrolltolower";
+        case "autoplay":
+            return "autoplay";
+        case "interval":
+            return "interval";
+        case "duration":
+            return "duration";
+        case "indicator-dots":
+            return "indicator-dots";
         default:
             break;
     }

@@ -19,7 +19,7 @@ function pakoRun(args, astGo) {
                     i++;
                 } else if (c > 191 && c < 224) {
                     c2 = utftext.charCodeAt(i + 1);
-                    string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+                    string += String.fromCharCode(((c & 31) << 6) | (   c2 & 63));
                     i += 2;
                 } else {
                     c2 = utftext.charCodeAt(i + 1);

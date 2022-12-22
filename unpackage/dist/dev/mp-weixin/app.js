@@ -18,7 +18,7 @@ const _sfc_main = {
     console.log("App Hide");
   }
 };
-var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/yangchong/Desktop/dynamicUni_3/App.vue"]]);
+var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/yangchong/Desktop/\u9879\u76EE/dynamicUni_3/App.vue"]]);
 const templateCom = () => "./components/template.js";
 function createApp() {
   const app = common_vendor.createSSRApp(App);

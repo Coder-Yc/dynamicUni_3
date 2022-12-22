@@ -1,63 +1,25 @@
 /******/ (function() { // webpackBootstrap
-var __webpack_exports__ = {};
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./dist/index.js":
 /*!***********************!*\
   !*** ./dist/index.js ***!
   \***********************/
-function runCode() {
-  var Page = function Page(page) {
-    return page;
-  };
-  return Page({
-    onLoad: function onLoad(options) {
-      options = this.options;
-      this.setdata({});
-    },
-    setdata: function setdata(dictData) {
-      for (var i in dictData) {
-        this.data[i] = dictData[i];
-      }
-      var a = function a($data) {
-        'use strict';
+/***/ (function() {
 
-        $data = $data || {};
-        var $out = '',
-          $line = [0, 0];
-        try {
-          $out += "<view  class='contain'>  <text  class='text' @tap='clickName' style='color: blue;'> test  </text> <scroll-view  scroll-y='true' class='scroll-Y' @tap='scrollClick' @scroll='scroll' style='height: 300rpx;'>  <view  id='demo1' class='scroll-view-item uni-bg-red' style='background-color: red; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> A  </view> <view  id='demo2' class='scroll-view-item uni-bg-green' style='background-color: blue; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> B  </view> <view  id='demo3' class='scroll-view-item uni-bg-blue' style='background-color: pink; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> C  </view>  </scroll-view>  </view> ";
-        } catch (error) {
-          throw {
-            name: 'RuntimeError',
-            path: null,
-            message: error.message,
-            line: $line[0] + 1,
-            column: $line[1] + 1,
-            source: "<view  class='contain'>  <text  class='text' @tap='clickName' style='color: blue;'> test  </text> <scroll-view  scroll-y='true' class='scroll-Y' @tap='scrollClick' @scroll='scroll' style='height: 300rpx;'>  <view  id='demo1' class='scroll-view-item uni-bg-red' style='background-color: red; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> A  </view> <view  id='demo2' class='scroll-view-item uni-bg-green' style='background-color: blue; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> B  </view> <view  id='demo3' class='scroll-view-item uni-bg-blue' style='background-color: pink; font-size: 36rpx; height: 300rpx; line-height: 300rpx; text-align: center;'> C  </view>  </scroll-view>  </view> ",
-            stack: error.stack
-          };
-        }
-        return $out;
-      };
-      var html = a(this.data);
-      //console.log("------", html);
-      this.html = this.parse(html);
-      //console.log('----------------build', JSON.stringify(this.html, null, 2))
-    },
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/dist/index.js: Unexpected token (57:8)\n\n\u001b[0m \u001b[90m 55 |\u001b[39m         console\u001b[33m.\u001b[39mlog(\u001b[32m\"-----------clickName点击了\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36mthis\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 56 |\u001b[39m     }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 57 |\u001b[39m         \u001b[33m:\u001b[39m \u001b[36mfunction\u001b[39m () {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 58 |\u001b[39m         console\u001b[33m.\u001b[39mlog(\u001b[32m\"-----------scrollClick点击了\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36mthis\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 59 |\u001b[39m     }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 60 |\u001b[39m     scroll(e) {\u001b[0m\n    at instantiate (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:67:32)\n    at constructor (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:364:12)\n    at Parser.raise (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:3364:19)\n    at Parser.unexpected (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:3397:16)\n    at Parser.parsePropertyName (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12202:24)\n    at Parser.parsePropertyDefinition (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12059:22)\n    at Parser.parseObjectLike (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11993:21)\n    at Parser.parseExprAtom (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11464:23)\n    at Parser.parseExprSubscripts (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11171:23)\n    at Parser.parseUpdate (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11153:21)\n    at Parser.parseMaybeUnary (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11127:23)\n    at Parser.parseMaybeUnaryOrPrivate (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10956:61)\n    at Parser.parseExprOps (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10962:23)\n    at Parser.parseMaybeConditional (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10937:23)\n    at Parser.parseMaybeAssign (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10895:21)\n    at /Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10863:39\n    at Parser.allowInAnd (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12640:12)\n    at Parser.parseMaybeAssignAllowIn (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10863:17)\n    at Parser.parseExprListItem (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12380:18)\n    at Parser.parseCallExpressionArguments (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11367:22)\n    at Parser.parseCoverCallAndAsyncArrowHead (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11279:29)\n    at Parser.parseSubscript (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11210:19)\n    at Parser.parseSubscripts (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11184:19)\n    at Parser.parseExprSubscripts (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11175:17)\n    at Parser.parseUpdate (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11153:21)\n    at Parser.parseMaybeUnary (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:11127:23)\n    at Parser.parseMaybeUnaryOrPrivate (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10956:61)\n    at Parser.parseExprOps (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10962:23)\n    at Parser.parseMaybeConditional (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10937:23)\n    at Parser.parseMaybeAssign (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10895:21)\n    at Parser.parseExpressionBase (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10845:23)\n    at /Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10840:39\n    at Parser.allowInAnd (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12635:16)\n    at Parser.parseExpression (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10840:17)\n    at Parser.parseReturnStatement (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:13296:28)\n    at Parser.parseStatementContent (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12954:21)\n    at Parser.parseStatement (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12917:17)\n    at Parser.parseBlockOrModuleBlockBody (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:13497:25)\n    at Parser.parseBlockBody (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:13489:10)\n    at Parser.parseBlock (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:13477:10)\n    at Parser.parseFunctionBody (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12287:24)\n    at Parser.parseFunctionBodyAndFinish (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12271:10)\n    at /Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:13637:12\n    at Parser.withSmartMixTopicForbiddingContext (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12617:14)\n    at Parser.parseFunction (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:13636:10)\n    at Parser.parseFunctionStatement (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:13276:17)\n    at Parser.parseStatementContent (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12947:21)\n    at Parser.parseStatement (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:12917:17)\n    at Parser.parseBlockOrModuleBlockBody (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:13497:25)\n    at Parser.parseBlockBody (/Users/yangchong/Desktop/项目/dynamicUni_3/页面脚手架/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:13489:10)");
 
-    data: {
-      counter: 0
-    },
-    clickName: function clickName() {
-      console.log("-----------clickName点击了");
-    },
-    scrollClick: function scrollClick() {
-      console.log("-----------scrollClick点击了", this.data.counter);
-    },
-    scroll: function scroll(e) {
-      console.log(e);
-    }
-  });
-}
-module.exports = runCode;
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./dist/index.js"]();
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map
